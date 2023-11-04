@@ -57,7 +57,7 @@ const renderActiveNote = () => {
      hide(saveNoteBtn);
      hide(clearBtn);
 
-     if (activeNote.id) {
+     if (activeNote && activeNote.id) {
           show(newNoteBtn);
           noteTitle.setAttribute("readonly", true);
           noteText.setAttribute("readonly", true);
@@ -186,5 +186,3 @@ if (window.location.pathname === "/notes") {
 }
 
 getAndRenderNotes();
-
-export { getAndRenderNotes };
