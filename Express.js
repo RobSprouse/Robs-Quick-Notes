@@ -1,6 +1,6 @@
 // [ ]: Application front end must connect to an Express.js back end.
 
-// [ ]: Application back end must store notes with unique IDs in a JSON file.
+// [x]: Application back end must store notes with unique IDs in a JSON file.
 
 // [ ]: Application must be deployed to Heroku.
 
@@ -28,7 +28,7 @@ app.listen(PORT, () => {
 // [x]: * `GET /notes` should return the `notes.html` file.
 // COMMENT: GET Route for notes page
 app.get("/notes", (req, res) => {
-     res.sendFile("./notes.html", { root: "." });
+     res.sendFile("./public/notes.html", { root: "." });
 });
 
 // [x]: `GET /api/notes` should read the `db.json` file and return all saved notes as JSON.
@@ -36,11 +36,9 @@ app.get("/api/notes", (req, res) => {
      res.sendFile("./db/db.json", { root: "." });
 });
 
-// [ ]: `POST /api/notes` should receive a new note to save on the request body, add it to
+// [x]: `POST /api/notes` should receive a new note to save on the request body, add it to
 // the `db.json` file, and then return the new note to the client. You'll need to find a way
 // to give each note a unique id when it's saved (look into npm packages that could do this for you).
-
-// FIXME: This route is working but need to have the response not produce an error
 app.post("/api/notes", (req, res) => {
      const newNote = req.body;
      newNote.id = nanoid();
@@ -51,11 +49,12 @@ app.post("/api/notes", (req, res) => {
           }
           const notes = JSON.parse(notesDb);
           notes.push(newNote);
-          fs.writeFile("./db/db.json", JSON.stringify(notes), (err) => {
+          fs.writeFile("./db/db.json", JSON.stringify(notes, null, 2), (err) => {
                if (err) {
                     console.error(err);
                     return res.sendStatus(500);
                }
+               return res.sendStatus(201);
           });
      });
 });
@@ -64,8 +63,8 @@ app.post("/api/notes", (req, res) => {
 // To delete a note, you'll need to read all notes from the `db.json` file, remove the note with the
 // given `id` property, and then rewrite the notes to the `db.json` file.
 
-// [ ]: `GET *` should return the `index.html` file.
-// BUG: This route is not working, was working before change from ES5 to ES6
-// app.get("*", (req, res) => {
-//      res.sendFile("./public/index.html", { root: "." });
-// });
+// [x]: `GET *` should return the `index.html` file.
+// COMMENT: GET Route for homepage (catch all)
+app.get("*", (req, res) => {
+     res.sendFile("./public/index.html", { root: "." })
+});
