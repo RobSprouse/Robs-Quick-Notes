@@ -63,6 +63,7 @@ const renderActiveNote = () => {
           noteText.setAttribute("readonly", true);
           noteTitle.value = activeNote.title;
           noteText.value = activeNote.text;
+          noteText.id = activeNote.id;
      } else {
           hide(newNoteBtn);
           noteTitle.removeAttribute("readonly");
@@ -76,6 +77,7 @@ const handleNoteSave = () => {
      const newNote = {
           title: noteTitle.value,
           text: noteText.value,
+          id: noteText.id,
      };
      saveNote(newNote).then(() => {
           getAndRenderNotes();
