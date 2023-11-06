@@ -25,9 +25,9 @@ app.get("/api/notes", (req, res) => {
 
 // COMMENT: POST Route for saving a note
 app.post("/api/notes", async (req, res) => {
-     const newNote = req.body;
-     newNote.id = nanoid();
      try {
+          const newNote = req.body;
+          newNote.id = nanoid();
           const notesDb = await readFile(notesJSON, "utf-8");
           const notes = JSON.parse(notesDb);
           notes.push(newNote);
