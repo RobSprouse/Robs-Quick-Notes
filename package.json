@@ -2,16 +2,18 @@
      "name": "robs-quick-notes",
      "version": "1.0.0",
      "description": "A simple note taking app that allows you to create, edit, and delete notes.",
-     "main": "server.js",
+     "main": "Express.js",
+     "type": "module",
      "scripts": {
-          "start": "node server.js",
-          "watch": "nodemon server.js",
+          "start": "node Express.js",
+          "watch": "nodemon Express.js",
           "test": "echo \"Error: no test specified\" && exit 1"
      },
      "author": "RobSprouse @ https://github.com/RobSprouse",
      "license": "MIT",
      "dependencies": {
-          "express": "^4.16.4"
+          "express": "^4.18.2",
+          "nanoid": "^5.0.2"
      },
      "devDependencies": {
           "nodemon": "^3.0.1"
