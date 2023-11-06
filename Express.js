@@ -8,22 +8,22 @@ const notesJSON = "./db/db.json";
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// COMMENT: Middleware for parsing JSON and urlencoded form data
+// COMMENT: Middleware for parsing JSON, urlencoded form data, and serving static files
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-// COMMENT: Middleware for serving all the static files in the public folder
 app.use(express.static("public"));
 
-// COMMENT: GET Route for notes page
+// COMMENT: GET Route for notes html page
 app.get("/notes", (req, res) => {
      res.sendFile("./public/notes.html", { root: "." });
 });
 
+// COMMENT: GET Route for retrieving all notes
 app.get("/api/notes", (req, res) => {
      res.sendFile(notesJSON, { root: "." });
 });
 
+// COMMENT: POST Route for saving a note
 app.post("/api/notes", async (req, res) => {
      const newNote = req.body;
      newNote.id = nanoid();
@@ -60,13 +60,12 @@ app.delete("/api/notes/:id", async (req, res) => {
      }
 });
 
-// [x]: `GET *` should return the `index.html` file.
-// COMMENT: GET Route for homepage (catch all)
-app.get("*", (req, res) => {
+// COMMENT: GET Route for homepage (catch all for undefined routes)
+app.get("*", (_, res) => {
      res.sendFile("./public/index.html", { root: "." });
 });
 
-// COMMENT: GET Route for homepage
+// COMMENT: Starts server and assigns port
 app.listen(PORT, () => {
      console.log(`Server listening on port ${PORT}`);
 });
