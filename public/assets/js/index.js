@@ -63,7 +63,6 @@ const renderActiveNote = () => {
           noteText.setAttribute("readonly", true);
           noteTitle.value = activeNote.title;
           noteText.value = activeNote.text;
-          noteID.value = activeNote.id;
      } else {
           hide(newNoteBtn);
           noteTitle.removeAttribute("readonly");
