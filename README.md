@@ -69,7 +69,14 @@ However, if you would like to see the application in it's development environmen
 
 ## Usage
 
-After navigating to https://robs-quick-notes-4729aed654b4.herokuapp.com/ in your browser, click on the `Get Started` button to begin using the application. Type your note's title and text into the appropriate fields and click the save icon in the top right corner to save your note. The saved notes will be displayed on the left. Click on the trash can icon next to a note to delete it.
+After navigating to https://robs-quick-notes-4729aed654b4.herokuapp.com/ in your browser, click on the `Get Started` button to begin using the application. Type your note's title and text into the appropriate fields and click the 
+save icon in the top right corner to save your note. The saved notes will be displayed on the left. Click on the trash can icon next to a note to delete it.
+
+The following screenshots represent what the application looks like.
+
+><img src="screenshots/robs-quick-notes-4729aed654b4.herokuapp.com_.png" height="500px">
+
+><img src="screenshots/robs-quick-notes-4729aed654b4.herokuapp.com_notes.png" height="500px">
 
 ## License
 
